@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Heranças</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"/>
+	
+</head>
+<body>
+	<h2>Sistema Bancário</h2>
+
+	<div id="login" class="jumbotron col-md-3" style="margin:0 auto;">
+		<h2>Login</h2>
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-12 control-label" for="usuariotxt"></label>  
+		  <div class="col-md-12">
+		  <input id="usuariotxt" name="usuariotxt" type="text" placeholder="Usuário" class="form-control input-md">
+		    
+		  </div>
+		</div>
+
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-12 control-label" for="cargoselect">Cargo</label>
+		  <div class="col-md-6">
+		    <select id="cargoselect" name="cargoselect" class="form-control">
+		      <option value="1">Gerente</option>
+		      <option value="2">Caixa</option>
+		    </select>
+		  </div>
+		</div>
+		<!-- Button -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="singlebutton"></label>
+		  <div class="col-md-4">
+		    <button class="btn btn-primary" onclick="login()">LOGIN</button>
+		  </div>
+		</div>
+	</div>
+
+	<div id="menu">
+		<a href="#" id ="abrecontalnk" class="btn btn-lg btn-success" onclick="addConta();"><span class="material-icons">person_add</span> CONTA</a>
+
+		<a href="#" id="fechacontalnk" class="btn btn-lg btn-danger" onclick="removeConta();"><span class="material-icons">
+		person_remove</span> Contas</a>
+
+		<a href="#" class="btn btn-lg btn-info" onclick="consultaConta();"><span class="material-icons">search	</span> Contas</a>
+
+		<a href="#" class="btn btn-lg btn-danger" onclick="saca();"><span class="material-icons">monetization_on</span> Saque</a>
+
+		<a href="#" class="btn btn-lg btn-success" onclick="deposita();"><span class="material-icons">monetization_on</span> Depósito</a>
+
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<a href="#" class="btn btn-lg btn-danger" onclick="exibeLogin();"><span class="material-icons">exit_to_app</span> SAIR</a>
+
+
+	</div><!--fim menu-->
+
+	<div id="exibeConsultas" class="jumbotron col-md-6" style="margin:0 auto;"></div>
+
+	<div id="cadastraconta" >
+		<form class="form-horizontal" name="cadconta">
+		<fieldset>
+
+		<!-- Form Name -->
+		<legend>Cadastro de Conta</legend>
+
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="tipoconta">TIPO DA CONTA</label>
+		  <div class="col-md-4">
+		    <select id="tipoconta" name="tipoconta" class="form-control" 
+		    onchange="tipoConta();">
+		      <option selected>x-ESCOLHA-x</option>
+		      <option value="pf">Pessoa Física(PF)</option>
+		      <option value="pj">Pessoa Jurídica(PJ)</option>
+		    </select>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="contatxt">Nº Conta</label>  
+		  <div class="col-md-4">
+		  <input id="contatxt" name="contatxt" type="text" placeholder="" class="form-control input-md" disabled>
+		    
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="nometxt">Nome</label>  
+		  <div class="col-md-5">
+		  <input id="nometxt" name="nometxt" type="text" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="teltxt">Telefone</label>  
+		  <div class="col-md-2">
+		  <input id="teltxt" name="teltxt" type="text" placeholder="(xx) xxxxx-xxxx" class="form-control input-md">
+		    
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div id="cpfdiv">
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="cpftxt">CPF</label>  
+		  <div class="col-md-4">
+		  <input id="cpftxt" name="cpftxt" type="text" placeholder="000.000.000-00" class="form-control input-md">
+		    
+		  </div>
+		</div>
+		</div>
+
+		<!-- Text input-->
+		<div id="cnpjdiv">
+		<div class="form-group" >
+		  <label class="col-md-4 control-label" for="cnpjtxt">CNPJ</label>  
+		  <div class="col-md-4">
+		  <input id="cnpjtxt" name="cnpjtxt" type="text" placeholder="000.000/0000-00" class="form-control input-md">
+		    
+		  </div>
+		</div>
+		</div>
+
+		<!-- Button -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for=""></label>
+		  <div class="col-md-4">
+		    <button id="" name="" class="btn btn-primary" onclick="cadastrarConta();">Cadastrar</button>
+		  </div>
+		</div>
+
+		</fieldset>
+		</form>
+	</div>
+
+	<div id="excluiconta" class="jumbotron col-md-6" style="margin:0 auto;">
+		<form class="form-horizontal" name="excluicontaform">
+			<fieldset>
+
+			<!-- Form Name -->
+			<legend>Excluir Conta</legend>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="escolheexcluir">Conta a ser excluída</label>
+			  <div class="col-md-4">
+			    <select id="escolheexcluir" name="escolheexcluir" class="form-control" onchange="achaNome();">
+
+			    </select>
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="nomeexcluitxt">Correntista</label>  
+			  <div class="col-md-4">
+			  <input id="nomeexcluitxt" name="nomeexcluitxt" type="text" placeholder="" class="form-control input-md">
+			    
+			  </div>
+			</div>
+
+			</fieldset>
+		</form>
+		<!-- Button -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for=""></label>
+			  <div class="col-md-4">
+			    <button class="btn btn-danger" onclick="excluirConta();">EXCLUIR</button>
+			  </div>
+			</div>
+
+
+	</div>
+
+</body>
+
+<script type="text/javascript" src="main.js"></script>
+</html>
